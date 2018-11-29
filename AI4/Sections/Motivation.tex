@@ -1,0 +1,18 @@
+\section{Motivation}
+
+In this section we look at why Artificial Neural Networks differ from biological neural networks, and why this is worth emulating and investigating. Then we look at some of the ways they can be modified to better emulate the biology of the brain
+
+Standard neural networks are based on mathematical matrix models. These models share little with the functions of the brain, as they are a much oversimplified version of the biological network that constitutes brainmatter.
+As biological neural networks have so far unparallelled computational powers and uses, this report is motivated by the idea that these biological networks are worth emulating in search of more powerful and general neural models.
+
+There are several differences between biological neural networks, such as a human brain, and artifical neural networks, such as a feed forward network. These include:
+
+\begin{itemize}
+\item Temporal states
+\item Non-differential signals
+\item Activation functions
+\item Structure
+\end{itemize}
+
+Looking only at the first three items on this list, there is a artifical neural network model that does take these into considerationg and as such better immitates the workings of the brain. This is the spiking neural network model, which uses the concept of spike trains instead of linear transformations to process the input information. These are said to have higher expressional power than standard neural networks, but in return require more computational power to run.
+The last item is structure. A biological brain is not made to be uni-directional, such as a feed-forward neural network, but instead is much better expressed as a reservoir computing framework. When one combines these two extensions of the feed-forward network, one arrives at what is called a Liquid State Machine.

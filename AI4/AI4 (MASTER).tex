@@ -1,0 +1,115 @@
+%\documentclass[twocolumn,oneside,article,9pt]{memoir}
+\documentclass[english,a5paper,oneside, onecolumn,article,9pt]{memoir}
+
+\usepackage[english]{babel}
+%\usepackage[ansinew]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{graphicx}
+%\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+%\usepackage{lipsum}
+%\usepackage{tabularx}
+%\usepackage[draft,english,footnote,nomargin]{fixme}
+%\usepackage{microtype}
+%\usepackage{lmodern}
+%\usepackage{hyperref}
+%\usepackage{siunitx}
+
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=red,          % color of internal links
+  citecolor=green,        % color of links to bibliography
+  filecolor=magenta,      % color of file links
+  urlcolor=cyan           % color of external links
+}
+
+
+
+% Marginer
+\setlrmarginsandblock{20mm}{*}{1}
+\setulmarginsandblock{20mm}{*}{1.2}
+\checkandfixthelayout[nearest]
+
+% Tillad ubalancerede spalter (at de ikke er lige høje)
+\raggedbottom
+
+% Indholdsfortengelse
+\setsecnumdepth{subsection}
+\maxtocdepth{subsection}
+
+%------------- Signature ----------------------
+\newcommand\Signature[4]{
+  \bigskip
+  \begin{@treecolumnfalse}
+    \begin{center}
+      \begin{tabular}{
+          @{\hspace{.05\textwidth}}
+          >{\centering\arraybackslash}p{.4\textwidth}
+          @{\hspace{.1\textwidth}}
+          >{\centering\arraybackslash}p{.4\textwidth}
+		  @{\hspace{.05\textwidth}}
+          >{\centering\arraybackslash}p{.4\textwidth}
+          @{\hspace{.05\textwidth}}}
+        \multicolumn{2}{c}{#1, \today} \\[10ex]
+        \hrulefill & \hrulefill \\
+        #2 & #3 & #4 \\[10ex]
+      \end{tabular}
+    \end{center}
+  \end{@twocolumnfalse}
+}
+%----------------------------------------------
+
+
+% Reimplementer \affiliation
+%\makeatletter
+%\newcommand{\affiliation}[1]{\gdef\@ffiliation{#1}}
+%\newcommand{\@ffiliation}{}
+%\renewcommand{\maketitlehookc}{\begin{center}\@ffiliation\end{center}}
+%\makeatother
+
+%---------------- Basic info ------------------
+\title{\Huge{AI4} \Large{ \\ Liquid State Mahine \\ Implementation and Testing}}
+\author{Daniel Tank Hviid \\ Dahvi14@student.sdu.dk}
+%\setlength\parindent{0pt}
+
+
+\begin{document}
+%\twocolumn[
+\maketitle
+\begin{centering}
+\section*{Abstract}
+\end{centering}
+
+Abstract here
+
+\tableofcontents
+\newpage
+
+%]
+\saythanks
+\pagenumbering{gobble}
+
+\input{Sections/Introduction}
+
+\input{Sections/Motivation}
+
+\input{Sections/Theory}
+
+\input{Sections/Implementation}
+
+\input{Sections/Testing}
+
+\input{Sections/Results}
+
+\input{Sections/Discussion}
+
+\input{Sections/Conclusion}
+
+
+
+
+
+
+\end{document}
+

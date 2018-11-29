@@ -1,0 +1,31 @@
+\section{Implementation}
+
+In this section we look into how the Liquid State Machine was implemented in a code environment, and which choices were made along the way.
+The code implementations of this project used C++ as a language, and generally used Object Oriented design philosophy, aiming to be modular and easy to use.
+
+The core of the implementation is the hidden layer of the Liquid State Machine, from now on refered to as the Pool. The Pool have input and output neurons, that are interfaced with by the input and output layers. %(image needed)
+The pool is implemented a 3 dimensional tensor of pointers to individual neurons. These neurons each contain a set of parameters, the important ones listed below:
+
+\begin{itemize}
+\item Input
+\item Internal potential
+\item Output
+\item Synapses
+\item Weights
+\end{itemize}
+
+As well as a list of constants pertaining to the specific neuron model used, see \ref{leaky}.
+
+The secondary part of the implementation is the input and output layers. In this implementation, these are implemented as standard feed forward networks. This method was chosen in order to facilitate the back propogation capabilities of a feed forward network in the output layer, which was then reused as the input layer for simplicity. As the two models are not compatible, the data needs to be converted from one to another at the transitions. The input transition is simple, it just adds to the input parameter of the Pool inputs, but the output transition is a bit more tricky.
+Because the implementation allows for two different kinds of activations, one at each time step and one that sums over a single time unit, two different transitions needs to be implemented.
+On the timestep activation the internal potential of the Pool outputs are simply given to the output layer as inputs, unless the neuron had just fired, in which case the output is 1.
+The timeunit activation instead takes the mean of the activations for the duration of the activation. Because of this, both activation methods then provide a number below 1, which allows for consistency when training the outputlayer.
+
+\subsection{Algorithm}
+
+Now that the elements are accounted for, the algorithm that is run each time the LSM is activated can be explained.
+
+At each step the first thing that needs to be done is running the input layer. This yields a set of values that are then provided to the Pool input layer.
+The next step is activating all of the neurons whose internal potential exceeded the threshold potential last timestep.
+The third step is to check the internal potential of each neuron, to see which are going to fire next timestep.
+The last step is to gather the output from the Pool outputs.

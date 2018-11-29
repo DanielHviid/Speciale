@@ -1,0 +1,12 @@
+\select@language {english}
+\contentsline {chapter}{Contents}{1}{section*.2}
+\contentsline {section}{\numberline {0.1}Introduction}{}{section.0.1}
+\contentsline {section}{\numberline {0.2}Motivation}{}{section.0.2}
+\contentsline {section}{\numberline {0.3}Theory}{}{section.0.3}
+\contentsline {subsection}{\numberline {0.3.1}Spiking Neural Network}{}{subsection.0.3.1}
+\contentsline {section}{\numberline {0.4}Implementation}{}{section.0.4}
+\contentsline {subsection}{\numberline {0.4.1}Algorithm}{}{subsection.0.4.1}
+\contentsline {section}{\numberline {0.5}Testing}{}{section.0.5}
+\contentsline {section}{\numberline {0.6}Results}{}{section.0.6}
+\contentsline {section}{\numberline {0.7}Discussion}{}{section.0.7}
+\contentsline {section}{\numberline {0.8}Conclusion}{}{section.0.8}
