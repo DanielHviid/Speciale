@@ -1,0 +1,14 @@
+﻿  Spiking Neural Network.cpp
+c:\users\danie\source\repos\spiking neural network\spiking neural network\spiking neural network.cpp(17): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\spiking neural network.cpp(63): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\danie\source\repos\spiking neural network\spiking neural network\spiking neural network.cpp(63): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\danie\source\repos\spiking neural network\spiking neural network\spiking neural network.cpp(90): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\spiking neural network.cpp(106): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\spiking neural network.cpp(134): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\spiking neural network.cpp(30): warning C4018: '<': signed/unsigned mismatch
+  c:\users\danie\source\repos\spiking neural network\spiking neural network\spiking neural network.cpp(146): note: see reference to function template instantiation 'double getScore<double>(std::vector<double,std::allocator<_Ty>>)' being compiled
+          with
+          [
+              _Ty=double
+          ]
+  Spiking Neural Network.vcxproj -> C:\Users\danie\source\repos\Spiking Neural Network\Debug\Spiking Neural Network.exe

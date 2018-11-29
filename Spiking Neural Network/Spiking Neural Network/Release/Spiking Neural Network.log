@@ -1,0 +1,16 @@
+﻿  stdafx.cpp
+  ANN.cpp
+c:\users\danie\source\repos\spiking neural network\spiking neural network\ann.h(3): fatal error C1083: Cannot open include file: 'Eigen/Dense': No such file or directory
+  NeuralNetwork.cpp
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuralnetwork.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuralnetwork.cpp(45): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuralnetwork.cpp(88): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuralnetwork.cpp(103): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuralnetwork.cpp(105): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuralnetwork.cpp(168): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuralnetwork.cpp(352): warning C4018: '<': signed/unsigned mismatch
+  Neuron.cpp
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuron.cpp(37): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\source\repos\spiking neural network\spiking neural network\neuron.cpp(53): warning C4018: '<': signed/unsigned mismatch
+  Spiking Neural Network.cpp
+c:\users\danie\source\repos\spiking neural network\spiking neural network\ann.h(3): fatal error C1083: Cannot open include file: 'Eigen/Dense': No such file or directory
