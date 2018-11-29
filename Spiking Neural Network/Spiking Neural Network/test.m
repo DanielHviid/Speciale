@@ -3,7 +3,7 @@ clear all
 clc
 
 internal = 0;
-resistance = 5;
+resistance = 100;
 timeconstant = 100;
 
 inputmin = 0.01;

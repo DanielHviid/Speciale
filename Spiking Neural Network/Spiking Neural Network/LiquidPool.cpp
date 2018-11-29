@@ -157,7 +157,9 @@ void LiquidPool::setRandomSynapses(int connections, int synapseLength, float min
 						y = width + rand() % (1 + 2 * synapseLength) - synapseLength;
 						z = height + rand() % (1 + 2 * synapseLength) - synapseLength;
 						if (x < 0 || x >= networkDepth || y < 0 || y >= networkWidth || z < 0 || z >= networkHeight)
+						{
 							continue;
+						}
 						if (network[depth][width][height]->addSynapses(network[x][y][z], randomFloat(minWeight, maxWeight)))
 						{
 							break;
@@ -165,10 +167,12 @@ void LiquidPool::setRandomSynapses(int connections, int synapseLength, float min
 					}
 				}
 			}
+
 }
 
 std::vector<double> LiquidPool::activate(std::vector<double> input)
 {
+	//std::cout << inputs[0]->getInternalValue() << std::endl;
 	activateInputs(input);
 	activateNeurons();
 	checkActivity();
@@ -218,7 +222,6 @@ void LiquidPool::activateNeurons()
 	while (1)
 	{
 		currentNeuron = buffer.removeNeuron();
-
 		if (currentNeuron == NULL)
 			break;
 

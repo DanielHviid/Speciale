@@ -16,6 +16,7 @@ Neuron::Neuron(int aDepth, int aWidth, int aHeight)
 
 Neuron::~Neuron()
 {
+
 }
 
 void Neuron::setPosition(int aDepth, int aWidth, int aHeight)
@@ -32,11 +33,11 @@ void Neuron::setconstants(float aTimeConstant, float aResistance, float aResting
 	restingPotential = aRestingPotential;
 }
 
-bool Neuron::addSynapses(Neuron * synapse, float weight)
+bool Neuron::addSynapses(Neuron* synapse, float weight)
 {
 	for (int n = 0; n < synapses.size(); n++)
 	{
-		if (synapses[n] == synapse)
+		if (synapses.size() != 0 && synapses[n] == synapse)
 			return false;
 	}
 	numberOfSynapses++;
@@ -84,9 +85,6 @@ void Neuron::printPosition()
 
 bool Neuron::update()
 {
-	// apply activation function, return true if neuron is active
-
-	//internal += timeConstant * (input - internal / resistance); Make sure this is wrong
 	internal += (resistance * input - internal) / timeConstant;
 	input = 0;
 

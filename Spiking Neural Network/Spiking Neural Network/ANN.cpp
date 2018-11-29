@@ -123,7 +123,6 @@ std::vector<double> ANN::activate(std::vector<double> input)
 }
 void ANN::backPropagate(std::vector<double> error)
 {
-
 	for (int n = 0; n < error.size() && n < outputSize; n++)
 	{
 		errors[depth - 1](0, n) = error[n] * inverseActivationFunction(activations[depth - 1](0, n));

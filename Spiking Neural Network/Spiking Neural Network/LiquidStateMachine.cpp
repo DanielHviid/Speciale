@@ -27,26 +27,31 @@ void LiquidStateMachine::setConstants(int newinputs, int newoutputs, int newpool
 	outputs = newoutputs;
 	poolInputs = newpoolInputs;
 	poolOutputs = newpoolOutputs;
+	learningRate = newLearningRate;
 
+	timeSteps = newtimeSteps;
+	resistance = newresistance;
+	restingPotential = newrestingPotential;
 
 	connections = newconnections;
 	synapseLength = newsynapseLength;
 	minWeight = newminWeight;
 	maxWeight = newmaxWeight;
 
-	timeSteps = newtimeSteps;
-	resistance = newresistance;
-	restingPotential = newrestingPotential;
+	poolDepth = newdepth;
+	poolWidth = newwidth;
+	poolHeight = newheight;
 
 	recreate();
 }
 
 void LiquidStateMachine::recreate()
 {
-	pool = LiquidPool(poolDepth, poolWidth, poolHeight);
+	pool.resetNetwork(poolDepth, poolWidth, poolHeight);
 	pool.setRandomInputsAndOutputs(poolInputs, poolOutputs);
 	pool.setParameters(timeSteps, resistance, restingPotential);
 	pool.setRandomSynapses(connections, synapseLength, minWeight, maxWeight);
+
 
 	inputLayer = ANN({inputs, poolInputs}, learningRate);
 	outputLayer = ANN({poolOutputs, outputs}, learningRate);
@@ -75,6 +80,29 @@ std::vector<double> LiquidStateMachine::activate(std::vector<double> input)
 	}
 
 	return outputLayer.activate(poolOutput);
+}
+
+void LiquidStateMachine::backProbagate(std::vector<double> error)
+{
+	outputLayer.backPropagate(error);
+}
+
+void LiquidStateMachine::backProbagate(std::vector<double> result, std::vector<double> truth)
+{
+	if (result.size() != truth.size())
+	{
+		std::cout << "Bad size! Result vs truth" << std::endl;
+		return;
+	}
+
+	std::vector<double> error = std::vector<double>(result.size());
+
+	for (int n = 0; n < result.size(); n++)
+	{
+		error[n] = truth[n] - result[n];
+	}
+
+	outputLayer.backPropagate(error);
 }
 
 

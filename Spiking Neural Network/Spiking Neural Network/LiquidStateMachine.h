@@ -23,6 +23,9 @@ public:
 	std::vector<double> activateOnce(std::vector<double> input);
 	std::vector<double> activate(std::vector<double> input);
 
+	void backProbagate(std::vector<double> error);
+	void backProbagate(std::vector<double> result, std::vector<double> expectation);
+
 	~LiquidStateMachine();
 
 private:
