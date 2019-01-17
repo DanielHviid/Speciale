@@ -1,0 +1,7 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Spiking Neural Network.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Spiking Neural Network.cpp
+e:\speciale git\lsm project\lsm project\spiking neural network.cpp(17): warning C4018: '<': signed/unsigned mismatch
+e:\speciale git\lsm project\lsm project\spiking neural network.cpp(29): warning C4018: '<': signed/unsigned mismatch
+e:\speciale git\lsm project\lsm project\spiking neural network.cpp(41): warning C4018: '<': signed/unsigned mismatch
+e:\speciale git\lsm project\lsm project\spiking neural network.cpp(78): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Spiking Neural Network.vcxproj -> E:\Speciale Git\LSM Project\Debug\LSM Project.exe
