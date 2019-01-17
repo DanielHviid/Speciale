@@ -2,9 +2,9 @@ close all
 clear all
 clc
 
-fileName = "scoretemp.txt";
+fileName = "scoretest.txt";
 
-stuff = load('stufftemp.txt');
+stuff = load('stufftest.txt');
 
 y = load(fileName);
 

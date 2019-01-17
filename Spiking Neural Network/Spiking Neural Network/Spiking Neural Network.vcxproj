@@ -149,7 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ANN.h" />
-    <ClInclude Include="LiquidPool.h" />
+    <ClInclude Include="SpikingHiddenLayer.h" />
     <ClInclude Include="LiquidStateMachine.h" />
     <ClInclude Include="Neuron.h" />
     <ClInclude Include="stdafx.h" />
@@ -157,7 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ANN.cpp" />
-    <ClCompile Include="LiquidPool.cpp" />
+    <ClCompile Include="SpikingHiddenLayer.cpp" />
     <ClCompile Include="LiquidStateMachine.cpp" />
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="Spiking Neural Network.cpp" />

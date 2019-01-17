@@ -27,10 +27,10 @@
     <ClInclude Include="ANN.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LiquidPool.h">
+    <ClInclude Include="LiquidStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LiquidStateMachine.h">
+    <ClInclude Include="SpikingHiddenLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +47,10 @@
     <ClCompile Include="ANN.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LiquidPool.cpp">
+    <ClCompile Include="LiquidStateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LiquidStateMachine.cpp">
+    <ClCompile Include="SpikingHiddenLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
