@@ -3,10 +3,10 @@ clear all
 clc
 
 internal = 0;
-resistance = 100;
-timeconstant = 100;
+resistance = 3.3;
+timeconstant = 10;
 
-inputmin = 0.01;
+inputmin = 0.5;
 inputmax = 1;
 
 tmax = 10000;
@@ -15,7 +15,7 @@ internalValue = zeros(1,tmax);
 output = zeros(1,tmax);
 inputs = zeros(1,tmax);
 
-for t = 1:10000
+for t = 1:25
     
     random = (inputmax-inputmin).*rand(1) + inputmin;
     internal = internal + (resistance*random - internal) / timeconstant;
@@ -43,5 +43,19 @@ for t = 1:10000
     pause(0.01)
     
     hold off
-    
+   
 end
+
+legend('Internal','Output','Input')
+title(['Spiking Neuron', newline, 'Resistance of 2.2, timeconstant of 10'])
+ylabel('Value')
+xlabel('timestep')
+
+
+
+
+
+
+
+
+

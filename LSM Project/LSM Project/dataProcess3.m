@@ -54,7 +54,7 @@ neuronHandles = plotNeurons(depth, width, height);
 plotAllSynapses(img, allSynapses)
 view([-8, 5.2])
 
-for n=1:N
+for n=1:100
    
     changeNeuronPlot(img, neuronHandles, internal(:,:,:,n), activity(:,:,:,n), restingPotential);
     saveToGif(img, n, filename)

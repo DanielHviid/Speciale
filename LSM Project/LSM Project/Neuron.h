@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdlib.h>     /* srand, rand */
 
 
 class Neuron
@@ -14,7 +15,7 @@ public:
 
 	void setPosition(int aDepth, int aWidth, int aHeight);
 
-	void setconstants(float aTimeConstant, float aResistance, float aRestingPotential, float aLearningRate);
+	void setconstants(float aTimeConstant, float aResistance, float aRestingPotential, float aLearningRate, double suppressive);
 
 	bool addSynapses(Neuron* synapse, float weight);
 
@@ -40,6 +41,9 @@ public:
 
 protected:
 
+	float randomFloat(float a, float b);
+
+	int suppresiveSign = 1;
 	double input = 0;
 	double internal = 0;
 	int output = 0;

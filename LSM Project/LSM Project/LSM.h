@@ -40,6 +40,11 @@ struct Buffer
 		return out;
 	}
 
+	int getNumberOfActiveNeurons()
+	{
+		return number + 1;
+	}
+
 private:
 	std::vector<Neuron*> storage;
 
@@ -67,12 +72,13 @@ public:
 
 	void resetNetwork(int aDepth, int aWidth, int aHeight, int inputSize, int outputSize);
 
-	void setInputsAndOutputs(std::vector<std::vector<position>> inputPositions, std::vector<std::vector<position>> outputPositions,
-		std::vector<std::vector<float>> inputWeights, std::vector<std::vector<float>> outputWeights);
+	void setInputs(std::vector<std::vector<position>> inputPositions, std::vector<std::vector<float>> inputWeights);
+	void setOutputs(std::vector<std::vector<position>> outputPositions, std::vector<std::vector<float>> outputWeights);
 
-	void setRandomInputsAndOutputs(int numberOfInputs, int numberOfOutputs, float minWeight, float maxWeight);
+	void setRandomInputs(int numberOfInputs, float minWeight, float maxWeight);
+	void setRandomOutputs(int numberOfOutputs, float minWeight, float maxWeight);
 
-	void setParameters(float aTimeConstant, float aResistance, float aRestingPotential, float aLearningRate);
+	void setParameters(float aTimeConstant, float aResistance, float aRestingPotential, float aLearningRate, double suppresivePortion);
 
 	void setSynapses(std::string append, int depth, int width, int height, std::vector<synapse> synapses);
 	void setSynapses(int depth, int width, int height, std::vector<synapse> synapses);
@@ -105,6 +111,8 @@ public:
 
 	void train(std::vector<std::vector<int>> activations, std::vector<double> learningFactors);
 
+	int getNumberOfActiveNeurons();
+
 	void reset();
 
 	// Save functions
@@ -136,6 +144,7 @@ private:
 	int networkDepth = 0, networkWidth = 0, networkHeight = 0, inputNeurons = 0, outputNeurons = 0;
 
 	float timeConstant, resistance, restingPotential, learningRate;
+	double suppresiveRate = 0;
 	std::vector<std::vector<std::vector<Neuron*>>> network;
 	Buffer buffer;
 

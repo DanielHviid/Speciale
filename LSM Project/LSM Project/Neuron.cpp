@@ -26,12 +26,17 @@ void Neuron::setPosition(int aDepth, int aWidth, int aHeight)
 	height = aHeight;
 }
 
-void Neuron::setconstants(float aTimeConstant, float aResistance, float aRestingPotential, float aLearningRate)
+void Neuron::setconstants(float aTimeConstant, float aResistance, float aRestingPotential, float aLearningRate, double suppresive)
 {
 	timeConstant = aTimeConstant;
 	resistance = aResistance;
 	restingPotential = aRestingPotential;
 	learningRate = aLearningRate;
+
+	if (suppresive > randomFloat(0, 1))
+	{
+		suppresiveSign = -1;
+	}
 }
 
 bool Neuron::addSynapses(Neuron* synapse, float weight)
@@ -43,7 +48,7 @@ bool Neuron::addSynapses(Neuron* synapse, float weight)
 	}
 	numberOfSynapses++;
 	synapses.push_back(synapse);
-	synapseWeights.push_back(weight);
+	synapseWeights.push_back(weight * suppresiveSign);
 	return true;
 }
 
@@ -128,6 +133,14 @@ float Neuron::getInternalValue()
 void Neuron::setAsActive()
 {
 	output = 1;
+}
+
+float Neuron::randomFloat(float a, float b)
+{
+	float random = ((float)rand()) / (float)RAND_MAX;
+	float diff = b - a;
+	float r = random * diff;
+	return a + r;
 }
 
 OutputNeuron::OutputNeuron()

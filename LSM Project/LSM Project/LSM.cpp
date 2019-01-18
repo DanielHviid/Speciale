@@ -42,7 +42,7 @@ void LSM::resetNetwork(int aDepth, int aWidth, int aHeight, int inputSize, int o
 	createNetwork(aDepth, aWidth, aHeight, inputSize, outputSize);
 }
 
-void LSM::setInputsAndOutputs(std::vector<std::vector<position>> inputPositions, std::vector<std::vector<position>> outputPositions, std::vector<std::vector<float>> inputWeights, std::vector<std::vector<float>> outputWeights)
+void LSM::setInputs(std::vector<std::vector<position>> inputPositions, std::vector<std::vector<float>> inputWeights)
 {
 	for (int n = 0; n < inputLayer.size(); n++)
 	{
@@ -51,7 +51,10 @@ void LSM::setInputsAndOutputs(std::vector<std::vector<position>> inputPositions,
 			inputLayer[n]->addSynapses(network[inputPositions[n][m].x][inputPositions[n][m].y][inputPositions[n][m].z], inputWeights[n][m]);
 		}
 	}
+}
 
+void LSM::setOutputs(std::vector<std::vector<position>> outputPositions, std::vector<std::vector<float>> outputWeights)
+{
 	for (int n = 0; n < outputLayer.size(); n++)
 	{
 		for (int m = 0; m < outputPositions.size(); m++)
@@ -61,7 +64,7 @@ void LSM::setInputsAndOutputs(std::vector<std::vector<position>> inputPositions,
 	};
 }
 
-void LSM::setRandomInputsAndOutputs(int numberOfInputs, int numberOfOutputs, float minWeight, float maxWeight)
+void LSM::setRandomInputs(int numberOfInputs, float minWeight, float maxWeight)
 {
 	Neuron* currentNeuron;
 
@@ -76,6 +79,11 @@ void LSM::setRandomInputsAndOutputs(int numberOfInputs, int numberOfOutputs, flo
 			}
 		}
 	}
+}
+
+void LSM::setRandomOutputs(int numberOfOutputs, float minWeight, float maxWeight)
+{
+	Neuron* currentNeuron;
 
 	for (int i = 0; i < outputLayer.size(); i++)
 	{
@@ -90,12 +98,13 @@ void LSM::setRandomInputsAndOutputs(int numberOfInputs, int numberOfOutputs, flo
 	}
 }
 
-void LSM::setParameters(float aTimeConstant, float aResistance, float aRestingPotential, float aLearningRate)
+void LSM::setParameters(float aTimeConstant, float aResistance, float aRestingPotential, float aLearningRate, double suppresivePortion)
 {
 	timeConstant = aTimeConstant;
 	resistance = aResistance;
 	restingPotential = aRestingPotential;
 	learningRate = aLearningRate;
+	suppresiveRate = suppresivePortion;
 
 	for (int depth = 0; depth < networkDepth; depth++)
 	{
@@ -103,20 +112,21 @@ void LSM::setParameters(float aTimeConstant, float aResistance, float aRestingPo
 		{
 			for (int height = 0; height < networkHeight; height++)
 			{
-				network[depth][width][height]->setconstants(timeConstant, resistance, restingPotential, learningRate);
+				network[depth][width][height]->setconstants(timeConstant, resistance, restingPotential, learningRate, suppresiveRate);
 			}
 		}
 	}
 
 	for (int n = 0; n < inputLayer.size(); n++)
 	{
-		inputLayer[n]->setconstants(timeConstant, resistance, restingPotential, learningRate);
+		inputLayer[n]->setconstants(timeConstant, resistance, restingPotential, learningRate, 0);
 	}
 
 	for (int n = 0; n < outputLayer.size(); n++)
 	{
-		outputLayer[n]->setconstants(timeConstant, resistance, restingPotential, learningRate);
+		outputLayer[n]->setconstants(timeConstant, resistance, restingPotential, learningRate, 0);
 	}
+
 }
 
 void LSM::setSynapses(std::string append, int depth, int width, int height, std::vector<synapse> synapses)
@@ -334,6 +344,11 @@ void LSM::train(std::vector<std::vector<int>> activations, std::vector<double> l
 	{
 		outputLayer[n]->train(activations[n], learningFactors[n]);
 	}
+}
+
+int LSM::getNumberOfActiveNeurons()
+{
+	return buffer.getNumberOfActiveNeurons();
 }
 
 void LSM::reset()
