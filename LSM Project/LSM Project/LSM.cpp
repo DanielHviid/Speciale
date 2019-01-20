@@ -197,11 +197,11 @@ std::vector<double> LSM::activate(std::vector<double> input)
 {
 
 	activateInputs(input);
-	activateNeurons();
 	saveInputValues();
 	saveInternalValues();
 	checkActivity();
 	saveActivity();
+	activateNeurons();
 
 	return getOutputVector();
 }
@@ -227,13 +227,9 @@ std::vector<double> LSM::activate(std::vector<double> input, std::vector<std::ve
 void LSM::activateInputs(std::vector<double> input)
 {
 
-	for (int n = 0; n < input.size(); n++)
+	for (int n = 0; n < inputNeurons; n++)
 	{
 		inputLayer[n]->receivePulse(input[n]);
-	}
-
-	for (int n = 0; n < inputLayer.size(); n++)
-	{
 		if (inputLayer[n]->update())
 		{
 			buffer.addNeuron(inputLayer[n]);
@@ -256,11 +252,6 @@ void LSM::activateNeurons()
 		if (saveName != "")
 			currentNeuron->savePulses(saveName);
 
-	}
-
-	for (int n = 0; n < outputNeurons; n++)
-	{
-		outputLayer[n]->activate();
 	}
 
 	std::ofstream myfile;
@@ -295,11 +286,6 @@ void LSM::checkActivity()
 			}
 		}
 	}
-
-	for (int n = 0; n < outputLayer.size(); n++)
-	{
-		outputLayer[n]->update();
-	}
 }
 
 std::vector<double> LSM::getOutputVector()
@@ -308,6 +294,8 @@ std::vector<double> LSM::getOutputVector()
 
 	for (int n = 0; n < outputLayer.size(); n++)
 	{
+		outputLayer[n]->activate();
+		outputLayer[n]->update();
 		result[n] = outputLayer[n]->getOutput();
 	}
 

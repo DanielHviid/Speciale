@@ -54,13 +54,16 @@ neuronHandles = plotNeurons(depth, width, height);
 plotAllSynapses(img, allSynapses)
 view([-8, 5.2])
 
-for n=1:100
+for n=1:N
    
     changeNeuronPlot(img, neuronHandles, internal(:,:,:,n), activity(:,:,:,n), restingPotential);
     saveToGif(img, n, filename)
     
 end
 
+title('100th timestep 10 connections, with inhibitors')
+
+axis off
 
 function h = plotNeurons(X, Y, Z)
     

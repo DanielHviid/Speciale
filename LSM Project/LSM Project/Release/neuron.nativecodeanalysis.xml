@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>neuron.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Neuron::height' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Neuron::{ctor}</FUNCTION>
+    <DECORATED>??0Neuron@@QAE@XZ</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>neuron.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Neuron::width' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Neuron::{ctor}</FUNCTION>
+    <DECORATED>??0Neuron@@QAE@XZ</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>neuron.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Neuron::depth' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Neuron::{ctor}</FUNCTION>
+    <DECORATED>??0Neuron@@QAE@XZ</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>neuron.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Neuron::activation' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Neuron::{ctor}</FUNCTION>
+    <DECORATED>??0Neuron@@QAE@XZ</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>neuron.cpp</FILENAME>
+      <LINE>9</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Neuron::activation' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Neuron::{ctor}</FUNCTION>
+    <DECORATED>??0Neuron@@QAE@HHH@Z</DECORATED>
+    <FUNCLINE>9</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

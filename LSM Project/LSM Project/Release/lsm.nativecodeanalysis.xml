@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>lsm.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'LSM::timeConstant' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>LSM::{ctor}</FUNCTION>
+    <DECORATED>??0LSM@@QAE@XZ</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>lsm.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'LSM::resistance' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>LSM::{ctor}</FUNCTION>
+    <DECORATED>??0LSM@@QAE@XZ</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>lsm.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'LSM::restingPotential' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>LSM::{ctor}</FUNCTION>
+    <DECORATED>??0LSM@@QAE@XZ</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>lsm.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'LSM::learningRate' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>LSM::{ctor}</FUNCTION>
+    <DECORATED>??0LSM@@QAE@XZ</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>lsm.cpp</FILENAME>
+      <LINE>9</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'LSM::timeConstant' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>LSM::{ctor}</FUNCTION>
+    <DECORATED>??0LSM@@QAE@HHHHH@Z</DECORATED>
+    <FUNCLINE>9</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>lsm.cpp</FILENAME>
+      <LINE>9</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'LSM::resistance' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>LSM::{ctor}</FUNCTION>
+    <DECORATED>??0LSM@@QAE@HHHHH@Z</DECORATED>
+    <FUNCLINE>9</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>lsm.cpp</FILENAME>
+      <LINE>9</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'LSM::restingPotential' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>LSM::{ctor}</FUNCTION>
+    <DECORATED>??0LSM@@QAE@HHHHH@Z</DECORATED>
+    <FUNCLINE>9</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\speciale git\lsm project\lsm project\</FILEPATH>
+      <FILENAME>lsm.cpp</FILENAME>
+      <LINE>9</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'LSM::learningRate' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>LSM::{ctor}</FUNCTION>
+    <DECORATED>??0LSM@@QAE@HHHHH@Z</DECORATED>
+    <FUNCLINE>9</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>
