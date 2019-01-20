@@ -6,7 +6,17 @@ This section documents the tests used to ensure that the implementation of Liqui
 
 There exists several neural models that can be used for a Liquid State Machine, or a Spiking Neural Network. The selected model is the Leaky-Integrate-and-Fire model \ref{sec:leaky}, as it is simple, not computationally heavy, and expressive enough for this project.
 
-In order to test this model, a baseline set of parameters must first be selected. The baseline parameters can be found in table \ref{tab:model1}. For these parameters, the model behaves as can be seen in figure \ref{fig:model1} which is clearly a smooth membrane potential curve followed by a spike as the potential reaches the spiking threshold. In figure \ref{fig:model2}, the parameters have been changed to allow a random input between zero and one, thus illustrating how a neuron would act when it's input is affected by several synapses that fire independent of each other. It is clear from these two images, as the neuron fires in exactly the same timestep, that the mean input is relevant, even if the input is not consistent.
+In order to test this model, a baseline set of parameters must first be selected. The baseline parameters can be found in table \ref{tab:neuron}. For these parameters, the model behaves as can be seen in figure \ref{fig:model1} which is clearly a smooth membrane potential curve followed by a spike as the potential reaches the spiking threshold. In figure \ref{fig:model2}, the parameters have been changed to allow a random input between zero and one, thus illustrating how a neuron would act when it's input is affected by several synapses that fire independent of each other. It is clear from these two images, as the neuron fires in exactly the same timestep, that the mean input is relevant, even if the input is not consistent.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc}
+Resistance & Time constant & Resting potential & Spiking potential\\
+2.2 & 10 & 0 & 1  
+\end{tabular}
+\caption{Table of parameters used when testing neuron activity.}
+\label{tab:neuron}
+\end{table}
 
 \begin{figure}
     \centering
@@ -59,8 +69,71 @@ By visualizing the activity of the network through repeated activations, this is
     \label{fig:implementation_test}
 \end{figure}
 
-\section{Reservoir parameters}
+\section{Reservoir activity}
 
-The reservoir parameters are as important as the 
+The reservoir parameters are as important as the neuron parameters. There are several parameters that can be tuned and modified, and in this section the number of connections as well as the proportion of exitory to inhibitory neurons are tuned. The rest of the parameters are kept constant, as well as the neuron parameters, which can be found in table \ref{tab:reservoir}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc}
+Resistance & Time constant & Resting potential & Spiking potential\\
+2.2 & 10 & 0 & 1
+\end{tabular}
+\begin{tabular}{ccc}
+Min weight & Max weight & Max synapse length\\
+0 & 1 & 2
+\end{tabular}
+\begin{tabular}{cc}
+Input neurons & Connections per input neuron\\
+3 & 10
+\end{tabular}
+\caption{Table of parameters used for testing network activity when testing different amounts of connectors per neuron.}
+\label{tab:reservoir}
+\end{table}
+
+ Having too few connections will result in low amount of activity that won't spread beyond the input neurons. Conversely, having too many connections will result in a cascade of activity that results in all, or most, neurons activating every timestep. Both of these options are equally useless, as they provide essentially constant output.
+
+First, to test the impact of the number of connections that each neuron have on the level of activity of the reservoir, two different amounts of neuron connections are tested. The reservoir after one hundred timestept with six and seven connections per neuron can be seen in figure \ref{fig:reservoir_6} and \ref{fig:reservoir_7}. As can be seen in the first image, six connections are enough to provide a good level of activity throughout the network, without having a lot of the neurons activate each timestep. On the other hand, having seven connections is enough to cause a run-away reaction that activates almost all the neurons each timestep. Clearly, there is a fine balance between having enough connections, and having too many.
+
+A way of correcting this is by including inhibitory neurons. In figure \ref{fig:reservoir_7_in} we see how 15\% inhibitory neurons brought the level of activity back down, and in figure \ref{fig:reservoir_10_in}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{Images/pool_6_100.png}
+        \caption{The test network after a hundred timesteps with 6 connections per neuron.}
+    \label{fig:reservoir_6}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{Images/pool_7_100.png}
+        \caption{The test network after a hundred timesteps with 7 connections per neuron.}
+    \label{fig:reservoir_7}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{Images/pool_7_100_s.png}
+        \caption{The test network after a hundred timesteps with 7 connections per neuron, with inhibitors.}
+    \label{fig:reservoir_7_in}
+    \end{subfigure}
+     \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{Images/pool_10_100_s.png}
+        \caption{The test network after a hundred timesteps with 10 connections per neuron, with inhibitors.}
+    \label{fig:reservoir_10_in}
+    \end{subfigure}
+    \caption{Spikes and membrane potential after a hundred timesteps with different amounts of connections per neuron and inhibitors.}
+\end{figure}
 
 \section{Training}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
