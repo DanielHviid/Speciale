@@ -17,22 +17,53 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\providecommand \oddpage@label [2]{}
 \select@language{english}
 \@writefile{toc}{\select@language{english}}
 \@writefile{lof}{\select@language{english}}
 \@writefile{lot}{\select@language{english}}
 \@writefile{toc}{\contentsline {chapter}{Contents}{1}{section*.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.1}Introduction}{}{section.0.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.2}Motivation}{}{section.0.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.3}Theory}{}{section.0.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {0.3.1}Spiking Neural Network}{}{subsection.0.3.1}}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {1}Introduction}{}{chapter.1}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {2}Motivation}{}{chapter.2}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {3}Theory}{}{chapter.3}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Spiking Neural Network}{}{section.3.1}}
 \citation{Leaky}
 \citation{leaky}
-\@writefile{toc}{\contentsline {section}{\numberline {0.4}Implementation}{}{section.0.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {0.4.1}Algorithm}{}{subsection.0.4.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.5}Testing}{}{section.0.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.6}Results}{}{section.0.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.7}Discussion}{}{section.0.7}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.8}Conclusion}{}{section.0.8}}
-\memsetcounter{lastsheet}{4}
-\memsetcounter{lastpage}{3}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Reservoir computing}{}{section.3.2}}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {4}Implementation}{}{chapter.4}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\citation{leaky}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Neuron}{}{section.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Input and outout}{}{subsection.4.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Membrane potential}{}{subsection.4.1.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Synapses}{}{subsection.4.1.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Output neuron}{}{subsection.4.1.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Algorithm}{}{section.4.2}}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {5}Testing}{}{chapter.5}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces The main algorithm of the LSM implementation. Input and Output layers are partly seperated from the pool for simplicity and modularity.\relax }}{}{algocf.1}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{Alg:activation}{{\M@TitleReference {1}{Algorithm}}{}{Algorithm}{algocf.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Neuron model}{}{section.5.1}}
+\newlabel{fig:implementation_test}{{\M@TitleReference {1a}{The neuron model using the baseline parameters and constant input of 0.5.\relax }}{}{The neuron model using the baseline parameters and constant input of 0.5.\relax }{figure.caption.4}{}}
+\newlabel{sub@fig:implementation_test}{{\M@TitleReference {a}{The neuron model using the baseline parameters and constant input of 0.5.\relax }}{}{The neuron model using the baseline parameters and constant input of 0.5.\relax }{figure.caption.4}{}}
+\newlabel{fig:implementation_test}{{\M@TitleReference {1b}{The neuron model using the baseline parameters and random input with a mean of 0.5.\relax }}{}{The neuron model using the baseline parameters and random input with a mean of 0.5.\relax }{figure.caption.4}{}}
+\newlabel{sub@fig:implementation_test}{{\M@TitleReference {b}{The neuron model using the baseline parameters and random input with a mean of 0.5.\relax }}{}{The neuron model using the baseline parameters and random input with a mean of 0.5.\relax }{figure.caption.4}{}}
+\newlabel{fig:implementation_test}{{\M@TitleReference {1c}{The neuron model using double resistance, and random input with a mean of 0.5.\relax }}{}{The neuron model using double resistance, and random input with a mean of 0.5.\relax }{figure.caption.4}{}}
+\newlabel{sub@fig:implementation_test}{{\M@TitleReference {c}{The neuron model using double resistance, and random input with a mean of 0.5.\relax }}{}{The neuron model using double resistance, and random input with a mean of 0.5.\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Tests of the neuron model.(a) shows the ideal potential curve followed by a spike. (b) shows how the potential curve caused by a randomized input can be used in place of the ideal curve to get the same frequency of the spike. (c) shows how doubling the resistance parameter does not double the fireing rate of the neuron.\relax }}{}{figure.caption.4}}
+\newlabel{fig:implementation_test}{{\M@TitleReference {1}{Tests of the neuron model.(a) shows the ideal potential curve followed by a spike. (b) shows how the potential curve caused by a randomized input can be used in place of the ideal curve to get the same frequency of the spike. (c) shows how doubling the resistance parameter does not double the fireing rate of the neuron.\relax }}{}{Tests of the neuron model.(a) shows the ideal potential curve followed by a spike. (b) shows how the potential curve caused by a randomized input can be used in place of the ideal curve to get the same frequency of the spike. (c) shows how doubling the resistance parameter does not double the fireing rate of the neuron.\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Propagation}{}{section.5.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Test of the propagation of the network. Every neuron has three synapses which are adjacent to it, and each spike will activate all three synases. After the first timestep, only the selected neuron is active. In the second timetep, it has spiked and is therefore inactive while the three neurons it has synapses to are active. After five timesteps a large proportion of the neurons are active, and after ten all connected neurons are active.\relax }}{}{figure.caption.5}}
+\newlabel{fig:implementation_test}{{\M@TitleReference {2}{Test of the propagation of the network. Every neuron has three synapses which are adjacent to it, and each spike will activate all three synases. After the first timestep, only the selected neuron is active. In the second timetep, it has spiked and is therefore inactive while the three neurons it has synapses to are active. After five timesteps a large proportion of the neurons are active, and after ten all connected neurons are active.\relax }}{}{Test of the propagation of the network. Every neuron has three synapses which are adjacent to it, and each spike will activate all three synases. After the first timestep, only the selected neuron is active. In the second timetep, it has spiked and is therefore inactive while the three neurons it has synapses to are active. After five timesteps a large proportion of the neurons are active, and after ten all connected neurons are active.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Reservoir parameters}{}{section.5.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Training}{}{section.5.4}}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {6}Results}{}{chapter.6}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Discussion}{}{section.6.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Conclusion}{}{section.6.2}}
+\memsetcounter{lastsheet}{9}
+\memsetcounter{lastpage}{7}

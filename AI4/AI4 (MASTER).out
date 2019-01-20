@@ -1,11 +1,21 @@
 \BOOKMARK [0][-]{section*.2}{Contents}{}% 1
-\BOOKMARK [1][-]{section.0.1}{Introduction}{section*.2}% 2
-\BOOKMARK [1][-]{section.0.2}{Motivation}{section*.2}% 3
-\BOOKMARK [1][-]{section.0.3}{Theory}{section*.2}% 4
-\BOOKMARK [2][-]{subsection.0.3.1}{Spiking Neural Network}{section.0.3}% 5
-\BOOKMARK [1][-]{section.0.4}{Implementation}{section*.2}% 6
-\BOOKMARK [2][-]{subsection.0.4.1}{Algorithm}{section.0.4}% 7
-\BOOKMARK [1][-]{section.0.5}{Testing}{section*.2}% 8
-\BOOKMARK [1][-]{section.0.6}{Results}{section*.2}% 9
-\BOOKMARK [1][-]{section.0.7}{Discussion}{section*.2}% 10
-\BOOKMARK [1][-]{section.0.8}{Conclusion}{section*.2}% 11
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
+\BOOKMARK [0][-]{chapter.2}{Motivation}{}% 3
+\BOOKMARK [0][-]{chapter.3}{Theory}{}% 4
+\BOOKMARK [1][-]{section.3.1}{Spiking Neural Network}{chapter.3}% 5
+\BOOKMARK [1][-]{section.3.2}{Reservoir computing}{chapter.3}% 6
+\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 7
+\BOOKMARK [1][-]{section.4.1}{Neuron}{chapter.4}% 8
+\BOOKMARK [2][-]{subsection.4.1.1}{Input and outout}{section.4.1}% 9
+\BOOKMARK [2][-]{subsection.4.1.2}{Membrane potential}{section.4.1}% 10
+\BOOKMARK [2][-]{subsection.4.1.3}{Synapses}{section.4.1}% 11
+\BOOKMARK [2][-]{subsection.4.1.4}{Output neuron}{section.4.1}% 12
+\BOOKMARK [1][-]{section.4.2}{Algorithm}{chapter.4}% 13
+\BOOKMARK [0][-]{chapter.5}{Testing}{}% 14
+\BOOKMARK [1][-]{section.5.1}{Neuron model}{chapter.5}% 15
+\BOOKMARK [1][-]{section.5.2}{Propagation}{chapter.5}% 16
+\BOOKMARK [1][-]{section.5.3}{Reservoir parameters}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.4}{Training}{chapter.5}% 18
+\BOOKMARK [0][-]{chapter.6}{Results}{}% 19
+\BOOKMARK [1][-]{section.6.1}{Discussion}{chapter.6}% 20
+\BOOKMARK [1][-]{section.6.2}{Conclusion}{chapter.6}% 21
