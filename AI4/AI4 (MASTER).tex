@@ -74,22 +74,36 @@
 \author{Daniel Tang Hviid \\ Dahvi14@student.sdu.dk}
 %\setlength\parindent{0pt}
 
+\pagenumbering{gobble}
 
 \begin{document}
 %\twocolumn[
 \maketitle
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=0.9\textwidth]{Images/Logo.png}
+\end{figure}
+
+\newpage
+
 \begin{centering}
 \section*{Abstract}
 \end{centering}
 
-Abstract here
+
+Liquid State Machines are a non-differential Neural Network model that contains temporal information with a reservoir hidden layer, that only needs the output layer to be trained.
+This paper explains the motive behind implementing a Liquid State Machine, how the theory behind such a model works, goes through the implementation of said model used in this project, and shows qualitative tests of the implementation where the activity of the reservoir and individual neurons are investigated.
+Finally, this paper shows the Liquid State Machine applied to a sequence prediction problem where the model must correctly predict the next item in the sequence.
+
 
 \tableofcontents
 \newpage
 
 %]
 \saythanks
-\pagenumbering{gobble}
+
+\pagenumbering{arabic}
 
 \input{Sections/Introduction}
 
@@ -101,11 +115,10 @@ Abstract here
 
 \input{Sections/Testing}
 
-\input{Sections/Results}
-
 \input{Sections/Discussion}
 
 \input{Sections/Conclusion}
+
 
 
 

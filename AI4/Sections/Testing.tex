@@ -1,6 +1,6 @@
 \chapter{Testing}
 
-This section documents the tests used to ensure that the implementation of Liquid State Machine is functional, and to highlight certain properties of both the implementation and the network model itself.
+This section documents the tests used to ensure that the implementation of Liquid State Machine is functional, and to highlight certain properties of both the implementation and the network model itself, finishing off with a test problem.
 
 \section{Neuron model}
 
@@ -122,11 +122,48 @@ A way of correcting this is by including inhibitory neurons. In figure \ref{fig:
     \caption{Spikes and membrane potential after a hundred timesteps with different amounts of connections per neuron and inhibitors.}
 \end{figure}
 
-\section{Training}
+\section{Sequence prediction}
 
+In order to test the full implementation, a test problem was chosen. This test problem is a classification problem on a continous sequence of "AAABBBCCC", using the Liquid State Machine to predict the next input in the sequence.
 
+In order to train the network to this sequence, every input is continued for ten timesteps, equal to the time constant. The parameters for the neurons and reservoir can be seen in table \ref{tab:final}, as well as the learning rate.
 
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc}
+Resistance & Time constant & Resting potential & Spiking potential\\
+2.2 & 10 & 0 & 1
+\end{tabular}
+\begin{tabular}{ccc}
+Min weight & Max weight & Max synapse length\\
+0 & 1 & 2
+\end{tabular}
+\begin{tabular}{ccc}
+Input neurons & Connections per input neuron & Learning rate\\
+3 & 10 & 0.0001
+\end{tabular}
+\caption{Table of parameters used for testing the network on sequence prediction.}
+\label{tab:final}
+\end{table}
 
+The training and testing is carried out by first creating the input for 1.200.000 timesteps. The first 90\% is used for training, and the remainding 10\% for testing.
+
+In image \ref{fig:result} the outputs for the last 300 timesteps are shown, and in image \ref{fig:resultMean} the outputs for the ten timesteps per sequence element is meaned. It is clear from the first image that the signal is somewhat unstable, which is supported by the accuracy of the network when looking at individual timesteps, which is 82\%. The second image, in contrast, is much more stable, and indeed has an accuracy of 100\% for the entire test set.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{Images/pool_6_100.png}
+        \caption{The last 300 timesteps for the test data.}
+    \label{fig:result}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{Images/pool_7_100.png}
+        \caption{The last 300 timesteps for the test data, mean outputs for each ten timesteps.}
+    \label{fig:resultMean}
+    \end{subfigure}
+    \caption{Outputs for the sequence prediction test.}
+\end{figure}
 
 
 

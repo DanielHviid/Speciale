@@ -67,5 +67,21 @@ Finally, this leaves a set of output values corresponding to which of the output
 One way of translating the output is to look at the membrane potential of the output layer instead of the spikes. This provides information about how close the neuron is to outputting, which is useful for training, but has the disadvantage of being low right after a spike has occured.
 Another approach is to average the spikes of several sequential activations, thereby looking at the frequency of the spikes. This can also be used for training, but contains less information if only a single, or few, spikes occur.
 
-Finally, one can use both. By looking at both the internal value as well as the spikes, and averaging this value over several activations, enough information is stored about the frequency of the spikes, as well as the lead-up to each spike.
+Finally, one can use both. By looking at both the internal value as well as the spikes, and averaging this value over several activations, enough information is stored about the frequency of the spikes, as well as the lead-up to each spike. As the spike values should be higher than the internal value, this value should be weighted higher than one, which is the max value of the internal value. Because of this, the output should be normalized, by dividing it with the weight of the spikes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
