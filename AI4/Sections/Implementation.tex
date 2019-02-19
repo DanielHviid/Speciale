@@ -3,38 +3,31 @@
 In this section we look into how the Liquid State Machine was implemented in a code environment, and which choices were made along the way.
 The code implementations of this project used C++ as a language, and generally used Object Oriented design philosophy, aiming to be modular and easy to use.
 
-The core of the implementation is the hidden layer of the Liquid State Machine, from now on refered to as the Pool. The Pool have input and output neurons, that are interfaced with by the input and output layers. %(image needed)
-The pool is implemented a 3 dimensional tensor of pointers to individual neurons. These neurons each contain a set of parameters, which are outlined in the section below.
-
 \section{Neuron}
 
-The base of the implementation is that of the neuron. This class is responsible for the heavy lifting of the implementation, as it handles the calculations of it's own state, as well as the input and output between individual neurons. Below are subsections explaining the important parameters and structures of class, as well as a class that inherites from the Neuron class.
+The base of the implementation is that of the neuron. This class is responsible for the heavy lifting of the implementation, as it handles the calculations of it's own state, as well as the input and output between individual neurons. Below are subsections explaining the important parameters and structures of the class, as well as a class that inherites from the Neuron class.
 
 \subsection{Input and outout}
 
-For every neural network, the neurons must have inputs, $[i]$ and outputs, $[o]$. These inputs are, with the exception of the input layer, the outputs of previous neurons. Often, the input and outputs are stored in matrices, or tensors, as the inputs are calculated by applying the input weights to the outputs. In this implementation, however, whenever a neuron activates it calls every neuron that it is connected to and adds the corrossponding weight to the collected input of that neuron. This is done because in a spiking neural network the output is either one or zero, and at any given activation step it is to be expected that the majority of neurons are not activating, thus saving computations. It should be noted that these savings could also be achieved through a sparse matrix or tensor, and tha tlibraries exist that do these kinds of calculations very efficiently, but this method was chosen for simplicity of implementation.
+For every neural network, the neurons must have inputs ~ $[i]$ and outputs ~ $[o]$. These inputs are, with the exception of the input layer ~ the outputs of previous neurons. Often, the input and outputs are stored in matrices, or tensors, as the inputs are calculated by applying the input weights to the activation function, which produces outputs. In this implementation, however, whenever a neuron activates it calls every neuron that it is connected to and adds the corrossponding weight to the collected input of that neuron. This is done because in a spiking neural network the output is either one or zero, and at any given activation step it is to be expected that the majority of neurons are not activating, thus saving computations. It should be noted that these savings could also be achieved through a sparse matrix or tensor, and that libraries exist that do these kinds of calculations very efficiently, but this method was chosen for simplicity of implementation.
 
 \subsection{Membrane potential}
 
-Normally, the input is reset for after each activation of the neural network; However, when using spiking neurons the input spills over to the next activation. This spillover is called the membrane potential \cite{leaky}, $[u]$. This internal value is what determines whether or not the neuron spikes to produce an output. Because a leaky-integrate-and-fire \ref{leaky_model} model is used  this value will decrease over time if it is not increased by other neurons spiking.
+In non-spiking Neural networks, the input is reset for after each activation of the Neural Network; However, when using spiking neurons the input spills over to the next activation. This spillover is called the membrane potential \cite{leaky}, $[u]$. This internal value is what determines whether or not the neuron spikes to produce an output. Because a leaky-integrate-and-fire \ref{leaky_model} model is used  this value will decrease over time if it is not increased by other neurons spiking.
 
-\subsection{Synapses}
+\subsection{Readout neuron}
 
-Because this implementation does not include a matrix multiplication method, the inputs of each neuron is calculated through the use of synapses; Each neuron contains a list of pointers to other neurons as well as a list of weights. Each pointer-weight pair is called a synapse, as they mirror the synaptic nature of a biological neural network. When a neuron activates it will call a method of the neuron corrosponding to each of the pointers that increases it's input by the amount equal to the weight of the synapse.
-
-\subsection{Output neuron}
-
-In a Liquid State Machine the output layer is a bit special. Because of the nature of the spiking models, it can be ver hard to train spiking neurons, and as such we want to do it as sparsely as possible. Because of this, having the output layer be the only part that is trained is an enticing option. This, however, is hard to achieve if the synapses are used for output, as it is in the standard Neuron class of this implementation. Because of this, the output neurons pull outputs from it's inputs, as opposed to pushing it's output to other neurons.
+In a Liquid State Machine the readout layer is a bit special. Because of the nature of the spiking models, it can be ver hard to train spiking neurons, and as such we want to do it as sparsely as possible. Because of this, having the readout layer be the only part that is trained is an enticing option. This, however, is hard to achieve if the synapses are used for readout, as it is in the standard Neuron class of this implementation. Because of this, the readout neurons directly access outputs from it's inputs. This input will then be added to the membrane potential of the neuron, bringing it closer to it's firing threshold.
 
 \section{Algorithm}
 
-Now that the elements are accounted for, the algorithm that is run each time the LSM is activated can be explained. As can be seen in \ref{Alg:activation}, each tme the network is activated it goes through four steps: \textbf{Inputs}, \textbf{Check Activity}, \textbf{Activate Neurons}, and \textbf{Output Neurons}. \textbf{Inputs} translates the network input into inputs for the input layer, and checks if they should be added to the list of active neurons. Then \textbf{Check Activity} adds all active neurons to the list of active neurons, before \textbf{Activate Neurons} activates all neurons with a high enough membrane potential. Finally, \textbf{Output Neurons} activates it's synapses and checks if it spikes. The output neurons needs to do this in reverse order because they pull the activations, instead of pushing them.
+Now that the elements are accounted for, the algorithm that is run each time the LSM is activated can be explained. As can be seen in algorithm \ref{Alg:activation}, each time the network is activated it goes through four steps: \textbf{Inputs}, \textbf{Check Activity}, \textbf{Activate Neurons}, and \textbf{Readout Neurons}. \textbf{Inputs} translates the network input into inputs for the input layer, and checks if they should be added to the list of spiking neurons. Then \textbf{Check Activity} adds all active neurons to the list of active neurons, before \textbf{Activate Neurons} activates all neurons with a high enough membrane potential. This sequence ensures that every neuron calculates it's internal state immidiately after every spiking neuron fires, ensuring that every neuron accesses the their inputs from the previous timesteps. Finally, \textbf{Readout Neurons} activates it's synapses and checks if it spikes. The readout neurons needs to do this in reverse order because they pull the activations, instead of pushing them.
 
 \begin{algorithm}
-\caption{The main algorithm of the LSM implementation. Input and Output layers are partly seperated from the pool for simplicity and modularity.}
+\caption{The main algorithm of the LSM implementation. Input and readout layers are partly seperated from the reservoir for simplicity and modularity.}
 \label{Alg:activation}
 \KwData{Input values}
-\KwResult{Output values}
+\KwResult{Readout values}
 	Step 1 : Inputs\;
 	\ForAll{Input Neurons}{
 		Apply provided input value\;
@@ -43,7 +36,7 @@ Now that the elements are accounted for, the algorithm that is run each time the
 		}
 	}
 	Step 2 : Check Activity\;
-	\ForAll{Pool Neurons}{
+	\ForAll{reservoir Neurons}{
 		\If{$Membrane Potential \geq Spiking Potential$}{
 			Add neuron to Active Neurons List\;
 		}
@@ -52,8 +45,8 @@ Now that the elements are accounted for, the algorithm that is run each time the
 	\ForAll{Neurons in Active Neurons List}{
 		Activate all synapses\;
 	}
-	Step 4 : Output Neurons\;
-	\ForAll{Output Neurons}{
+	Step 4 : Readout Neurons\;
+	\ForAll{Readout Neurons}{
 		Activate all synapses\;
 		\If{$Membrane Potential \geq Spiking Potential$}{
 		Set output to 1\;
@@ -62,10 +55,10 @@ Now that the elements are accounted for, the algorithm that is run each time the
 	Output active Neurons\;
 \end{algorithm}
 
-Finally, this leaves a set of output values corresponding to which of the output neurons have been activated. This, however, does not necessarily translate very well into a readable output, as output neurons cannot be expected to spike every activation.
+Finally, this leaves a set of readout values corresponding to which of the readout neurons have been activated. This, however, does not necessarily translate very well into a readable output, as readout neurons cannot be expected to spike every activation.
 
-One way of translating the output is to look at the membrane potential of the output layer instead of the spikes. This provides information about how close the neuron is to outputting, which is useful for training, but has the disadvantage of being low right after a spike has occured.
-Another approach is to average the spikes of several sequential activations, thereby looking at the frequency of the spikes. This can also be used for training, but contains less information if only a single, or few, spikes occur.
+One way of translating the output is to look at the membrane potential of the readout layer instead of the spikes. This provides information about how close the neuron is to outputting, which is useful for training, but has the disadvantage of being low right after a spike has occured.
+Another approach is to average the spikes of several sequential activations, thereby looking at the frequency of the spikes. This can also be used for training, but contains less information if only a single, or few, spikes occur. This can also be done on the entirety of the reservoir as well, to get a spiking rate of the population.
 
 Finally, one can use both. By looking at both the internal value as well as the spikes, and averaging this value over several activations, enough information is stored about the frequency of the spikes, as well as the lead-up to each spike. As the spike values should be higher than the internal value, this value should be weighted higher than one, which is the max value of the internal value. Because of this, the output should be normalized, by dividing it with the weight of the spikes.
 

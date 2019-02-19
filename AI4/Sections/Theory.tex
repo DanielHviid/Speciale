@@ -2,6 +2,10 @@
 
 In this section we look at the teory behind Spiking neural networks, reservoir computing, and Liquid State Machines, assuming that the reader is familiar with Artificial neural networks such as perceptrons, feed-forward networks, and recurrent networks.
 
+\section{Basic knowledge}
+
+The brain is a large network of individual neurons that are connected through synapses. These neurons are often dormant, waiting for the input from other neurons to fire. This pattern of a large interconnected network has produced general intelligence, and is therefore inherintly worth studying. As it is currently impossible to make a complete model, there are several concepts from biology that can be used successfully in a project such as this, including a simple Neuron model of the sodium-pump and the exitory and inhibitory synaptic connections that affect the sodium pump of other neurons through axons and dendrites.
+
 \section{Spiking Neural Network}
 
 The main difference between a Spiking Neural Network and a non-Spiking Neural Network is the way it processes the weighted input sum in order to find the output. For a non-Spiking NN, this is the activation function, while a Spiking NN uses a model that stores information from activation to activation. This main difference is what provides the Spiking NN with temporal information that permeates through the network.
@@ -15,9 +19,10 @@ The Leaky Integrate-and-fire model attempts to emulate the membrane potential an
 \end{equation}
 
 Where [$\tau_m$] is the time constant, [$v(t)$] is the membrane potential at a given time t, R is the resistance of the membrane, and $I(t)$ is the integral of the input current.
-There are three different parts to this. The first is the change in membrane potential; This change in potential is the main part of the equation, as it is what we wish to find at each time step. The second part is the ``leaky'' part of the Leaky Integrate-and-fire, where [$v(t)$] is the membrane potential at a given time t. At each timestep a part of the stored potential is lost, which is proportional in size with the stored potential. The last part is the integral of the weighted inputs, where R is the resistance of the membrane, and $I(t)$ is the integral of the input current, as with a non-Spiking NN. The time constant [$\tau_m$] then scales all of this to fit with the time between each activation.
+There are three different parts to this. The first is the change in membrane potential; This change in potential is the main part of the equation, as it is what we wish to find at each time step. [$v(t)$] is the membrane potential at a given time t, which is the ``leaky'' part of the Leaky Integrate-and-fire. At each timestep a part of the stored potential is lost, which is proportional in size with the stored potential. The last part is the integral of the weighted inputs, where R is the resistance of the membrane, and $I(t)$ is the integral of the input current, as with a non-Spiking NN. The time constant [$\tau_m$] then scales all of this to fit with the time between each activation. An example of this can be seen in figure \ref{fig:model1}.
+
+When $v(t)$ exceeds a certain value, often set to one as an easy baseline, the model fires, producing a Dirac delta function known as a ``spike'' to which the model is named. This spike carries the information forward to other connected neurons as an output that can then be weighted as usual.
 
 \section{Reservoir computing}
 
-A reservoir Neural Network is an extension to a recurrent neural network, where the hidden layer is made in such a way that instead of having several layers that feed to each other in order with recurrent connections, the individual neurons are simply randomly connected to each other with random weights.
-The input and output layers are then connected to neurons throughout the hidden layer.
+A reservoir Neural Network is an extension to a recurrent neural network, where the ``hidden layer'' is made in such a way that instead of having several layers that feed to each other in order with recurrent connections, the individual neurons are simply randomly connected to each other with random weights. This produces what is known as a reservoir that can then be connected to a readout layer that takes the place of the output layer. The two common techniques for this are known as the Echo State Network and the Liquid State Machine \cite{leaky}.

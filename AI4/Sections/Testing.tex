@@ -4,38 +4,28 @@ This section documents the tests used to ensure that the implementation of Liqui
 
 \section{Neuron model}
 
-There exists several neural models that can be used for a Liquid State Machine, or a Spiking Neural Network. The selected model is the Leaky-Integrate-and-Fire model \ref{sec:leaky}, as it is simple, not computationally heavy, and expressive enough for this project.
+The neuron model is a critical part of this project, and as such should be tested to gain insight of what impacts the firing rate and sensitivity of the model.
 
-In order to test this model, a baseline set of parameters must first be selected. The baseline parameters can be found in table \ref{tab:neuron}. For these parameters, the model behaves as can be seen in figure \ref{fig:model1} which is clearly a smooth membrane potential curve followed by a spike as the potential reaches the spiking threshold. In figure \ref{fig:model2}, the parameters have been changed to allow a random input between zero and one, thus illustrating how a neuron would act when it's input is affected by several synapses that fire independent of each other. It is clear from these two images, as the neuron fires in exactly the same timestep, that the mean input is relevant, even if the input is not consistent.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{cccc}
-Resistance & Time constant & Resting potential & Spiking potential\\
-2.2 & 10 & 0 & 1  
-\end{tabular}
-\caption{Table of parameters used when testing neuron activity.}
-\label{tab:neuron}
-\end{table}
+In order to test this model, a baseline set of parameters must first be selected. The baseline parameters are as follows; Resistance : 2.2, Time constant : 10, Resting potential : 0, Spiking potential : 1. For these parameters, the model behaves as can be seen in figure \ref{fig:model1} which is clearly a smooth membrane potential curve followed by a spike as the potential reaches the spiking threshold. In figure \ref{fig:model2}, the parameters have been changed to allow a random input between zero and one. This input range is chosen to simulate a set of different synapses providing input to the neuron could behave if the expected sum of their synaptic inputs was in this range, illustrating how a neuron would act when it's input is affected by several synapses that fire independent of each other. It is clear from these two images, as the neuron fires in exactly the same timestep, that the mean input is relevant, even if the input is not consistent.
 
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{Images/slow.png}
         \caption{The neuron model using the baseline parameters and constant input of 0.5.}
-        \label{fig:implementation_test}
+        \label{fig:model1}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{Images/randomInput.png}
         \caption{The neuron model using the baseline parameters and random input with a mean of 0.5.}
-        \label{fig:implementation_test}
+        \label{fig:model2}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{Images/fast.png}
         \caption{The neuron model using double resistance, and random input with a mean of 0.5.}
-        \label{fig:implementation_test}
+        \label{fig:fast}
     \end{subfigure}
-    \caption{Tests of the neuron model.(a) shows the ideal potential curve followed by a spike. (b) shows how the potential curve caused by a randomized input can be used in place of the ideal curve to get the same frequency of the spike. (c) shows how doubling the resistance parameter does not double the fireing rate of the neuron.}
+    \caption{Tests of the neuron model.(a) shows the ideal potential curve followed by a spike. (b) shows how the potential curve caused by a randomized input can be used in place of the ideal curve to get the same frequency of the spike. (c) shows how resistance parameter is nonproportional to the firing rate.}
     \label{fig:implementation_test}
 \end{figure}
 
@@ -71,25 +61,7 @@ By visualizing the activity of the network through repeated activations, this is
 
 \section{Reservoir activity}
 
-The reservoir parameters are as important as the neuron parameters. There are several parameters that can be tuned and modified, and in this section the number of connections as well as the proportion of exitory to inhibitory neurons are tuned. The rest of the parameters are kept constant, as well as the neuron parameters, which can be found in table \ref{tab:reservoir}.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{cccc}
-Resistance & Time constant & Resting potential & Spiking potential\\
-2.2 & 10 & 0 & 1
-\end{tabular}
-\begin{tabular}{ccc}
-Min weight & Max weight & Max synapse length\\
-0 & 1 & 2
-\end{tabular}
-\begin{tabular}{cc}
-Input neurons & Connections per input neuron\\
-3 & 10
-\end{tabular}
-\caption{Table of parameters used for testing network activity when testing different amounts of connectors per neuron.}
-\label{tab:reservoir}
-\end{table}
+The reservoir parameters are as important as the neuron parameters. There are several parameters that can be tuned and modified, and in this section the number of connections as well as the proportion of exitory to inhibitory neurons are tuned. The rest of the parameters are kept constant, as well as the neuron parameters, which are as follows; Resistance : 2.2, Time constant : 10, Resting potential : 0, Spiking potential : 1, Minimum weight : 0, Maximum weight : 1, Max synapse length : 2, Number of input neurons : 3, Number of connections per input neuron : 10.
 
  Having too few connections will result in low amount of activity that won't spread beyond the input neurons. Conversely, having too many connections will result in a cascade of activity that results in all, or most, neurons activating every timestep. Both of these options are equally useless, as they provide essentially constant output.
 
@@ -99,22 +71,22 @@ A way of correcting this is by including inhibitory neurons. In figure \ref{fig:
 
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.225\textwidth}
         \includegraphics[width=\textwidth]{Images/pool_6_100.png}
         \caption{The test network after a hundred timesteps with 6 connections per neuron.}
     \label{fig:reservoir_6}
     \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.225\textwidth}
         \includegraphics[width=\textwidth]{Images/pool_7_100.png}
         \caption{The test network after a hundred timesteps with 7 connections per neuron.}
     \label{fig:reservoir_7}
     \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.225\textwidth}
         \includegraphics[width=\textwidth]{Images/pool_7_100_s.png}
         \caption{The test network after a hundred timesteps with 7 connections per neuron, with inhibitors.}
     \label{fig:reservoir_7_in}
     \end{subfigure}
-     \begin{subfigure}[b]{0.4\textwidth}
+     \begin{subfigure}[b]{0.225\textwidth}
         \includegraphics[width=\textwidth]{Images/pool_10_100_s.png}
         \caption{The test network after a hundred timesteps with 10 connections per neuron, with inhibitors.}
     \label{fig:reservoir_10_in}
@@ -126,25 +98,7 @@ A way of correcting this is by including inhibitory neurons. In figure \ref{fig:
 
 In order to test the full implementation, a test problem was chosen. This test problem is a classification problem on a continous sequence of "AAABBBCCC", using the Liquid State Machine to predict the next input in the sequence.
 
-In order to train the network to this sequence, every input is continued for ten timesteps, equal to the time constant. The parameters for the neurons and reservoir can be seen in table \ref{tab:final}, as well as the learning rate.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{cccc}
-Resistance & Time constant & Resting potential & Spiking potential\\
-2.2 & 10 & 0 & 1
-\end{tabular}
-\begin{tabular}{ccc}
-Min weight & Max weight & Max synapse length\\
-0 & 1 & 2
-\end{tabular}
-\begin{tabular}{ccc}
-Input neurons & Connections per input neuron & Learning rate\\
-3 & 10 & 0.0001
-\end{tabular}
-\caption{Table of parameters used for testing the network on sequence prediction.}
-\label{tab:final}
-\end{table}
+In order to train the network to this sequence, every input is continued for ten timesteps, equal to the time constant. The parameters for the neurons and reservoir are; Resistance : 3.3, Time constant : 10, Resting potential : -0.1, Spiking potential : 1, Minimum weight : 0.5, Maximum weight : 1, Max synapse length : 1, Number of input neurons : 3, Number of connections per input neuron : 100, Learning rate : 0.0001, Proportion of inhibitory neurons : 25\%.
 
 The training and testing is carried out by first creating the input for 1.200.000 timesteps. The first 90\% is used for training, and the remainding 10\% for testing.
 
@@ -153,13 +107,13 @@ In image \ref{fig:result} the outputs for the last 300 timesteps are shown, and 
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{Images/pool_6_100.png}
+        \includegraphics[width=\textwidth]{Images/LSM.png}
         \caption{The last 300 timesteps for the test data.}
     \label{fig:result}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{Images/pool_7_100.png}
-        \caption{The last 300 timesteps for the test data, mean outputs for each ten timesteps.}
+        \includegraphics[width=\textwidth]{Images/LSMmean.png}
+        \caption{The last 300 timesteps for the test data, meaned outputs.}
     \label{fig:resultMean}
     \end{subfigure}
     \caption{Outputs for the sequence prediction test.}
